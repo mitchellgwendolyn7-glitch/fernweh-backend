@@ -3,6 +3,16 @@
 // Your OpenAI key lives only in Vercel's environment variables — never sent to the browser.
 
 export default async function handler(req, res) {
+  // Allow the Fernweh app (running on a different origin) to call this function
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  if (req.method === 'OPTIONS') {
+    // Browser preflight check — must succeed before the real POST is sent
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Use POST' });
   }
