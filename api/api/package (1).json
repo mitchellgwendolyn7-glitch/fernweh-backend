@@ -1,6 +1,0 @@
-{
-  "name": "fernweh-backend",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Minimal serverless relay so Fernweh's prototype can call Plant.id and GPT-4o Vision without exposing API keys or hitting CORS blocks."
-}
